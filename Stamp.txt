@@ -1,0 +1,1308 @@
+# -ADM-homework-1
+@##Detect HTML Tags, Attributes and Attribute Values part 1
+
+
+from html.parser import HTMLParser
+
+
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print ('Start :', tag)
+        for ele in attrs:
+            print ('->', ele[0], '>', ele[1])
+
+    def handle_endtag(self, tag):
+        print ('End   :', tag)
+
+    def handle_startendtag(self, tag, attrs):
+        print ('Empty :', tag)
+        for ele in attrs:
+            print ('->', ele[0], '>', ele[1])
+
+
+parser = MyHTMLParser()
+for _ in range(int(input())):
+    parser.feed(input())
+  
+
+##### HtML PART 2
+
+from html.parser import HTMLParser
+
+
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print ('Start :', tag)
+        for ele in attrs:
+            print ('->', ele[0], '>', ele[1])
+
+    def handle_endtag(self, tag):
+        print ('End   :', tag)
+
+    def handle_startendtag(self, tag, attrs):
+        print ('Empty :', tag)
+        for ele in attrs:
+            print ('->', ele[0], '>', ele[1])
+
+
+parser = MyHTMLParser()
+for _ in range(int(input())):
+    parser.feed(input())
+
+
+######Standardize Mobile Number Using Decorators
+
+def wrapper(func):
+    def standardize(l):
+        return "{prefix} {left} {right}".format(prefix='+91', left=l[-10:-5], right=l[-5:])
+    
+    def wrap(l):
+        return func(map(standardize, l))
+    
+    return wrap
+
+#########Decorators 2 - Name Directory
+
+
+import operator
+
+
+def person_lister(f):
+    def inner(people):
+        return map(f, sorted(people, key=lambda x: int(x[2])))
+
+    return inner
+
+#########  SImplified Chess Engine
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the superDigit function below.
+def superDigit(n, k):
+
+    def add_digits(string):
+        if len(string) == 1:
+            return string
+        result = sum(int(s) for s in string)
+        return add_digits(str(result))
+
+    start = sum(int(s) for s in n) * k
+    return add_digits(str(start))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = nk[0]
+
+    k = int(nk[1])
+
+    result = superDigit(n, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+########### XML2 - Find the Maximum Depth
+
+maxdepth = 0
+def depth(elem, level):
+    global maxdepth
+    # your code goes here
+  
+import xml.etree.ElementTree as etree
+maxdepth = -1
+def depth(elem, level):
+    global maxdepth
+    if (level == maxdepth):
+        maxdepth += 1
+        
+    for child in elem:
+        depth(child, level + 1)
+
+@######### Viral Advertising
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the viralAdvertising function below.
+def viralAdvertising(n):
+    total_likes = 0
+    shared = 5
+
+    for i in range(n):
+        likes = shared//2
+        total_likes+= likes
+        shared = likes * 3
+
+    return total_likes
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    result = viralAdvertising(n)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+##########Number Line Jumps
+
+Open in editor
+1
+#!/bin/python3
+2
+​
+3
+import math
+4
+import os
+5
+import random
+6
+import re
+7
+import sys
+8
+​
+9
+# Complete the kangaroo function below.
+10
+def kangaroo(x1, v1, x2, v2):
+11
+    if x1<x2 and v1<v2:
+12
+        return "NO"
+13
+    else:
+14
+        if v1!=v2 and (x2-x1)%(v1-v2)==0:
+15
+            return "YES"
+16
+        else:
+17
+            return "NO"
+18
+​
+19
+if __name__ == '__main__':
+20
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+21
+​
+22
+    x1V1X2V2 = input().split()
+23
+​
+24
+    x1 = int(x1V1X2V2[0])
+25
+​
+26
+    v1 = int(x1V1X2V2[1])
+27
+​
+28
+    x2 = int(x1V1X2V2[2])
+29
+​
+30
+    v2 = int(x1V1X2V2[3])
+31
+​
+32
+    result = kangaroo(x1, v1, x2, v2)
+33
+​
+34
+    fptr.write(result + '\n')
+35
+​
+36
+    fptr.close()
+37
+​
+Test case 0
+
+############# Birthday Cake Candles
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'birthdayCakeCandles' function below.
+#
+
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY candles as parameter.
+#
+
+def birthdayCakeCandles(ar):
+    # Write your code here
+    biggest = max(ar)
+    return ar.count(biggest)
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    candles_count = int(input().strip())
+
+    candles = list(map(int, input().rstrip().split()))
+
+    result = birthdayCakeCandles(candles)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+########### Sum and Prod
+
+import numpy as np
+n, m = map(int, input().split())
+arr = np.array([input().split() for i in range(n)], dtype=int)
+sumArray = np.sum(arr, axis=0)
+product = np.product(sumArray)
+print(product)
+
+
+##########Floor, Ceil and Rint
+
+import numpy as np
+np.set_printoptions(sign=" ")
+arr = np.array(input().split(), dtype=float)
+f = np.floor(arr)
+c = np.ceil(arr)
+r = np.rint(arr)
+print(f)
+print(c)
+print(r)
+
+
+
+######MIN AND MAX
+
+import numpy as np
+n, m = map(int, input().split())
+A = np.array([input().split() for i in range(n)], dtype=int)
+B = np.array([input().split() for i in range(n)], dtype=int)
+print(A + B)
+print(A - B)
+print(A * B)
+print(A // B)
+print(A % B)
+print(A ** B)
+ 
+######Map and Lambda Function
+
+cube = lambda x: x ** 3
+
+
+def fibonacci(n):
+    List = [0, 1]
+    for i in range(2, n):
+        List.append(List[i-1] + List[i-2])
+        
+    return(List[0:n])
+
+#########itertools.product
+
+lower = ""
+upper = ""
+odd = ""
+even = ""
+s = sorted(input()) 
+for i in s:
+    if i.islower():
+        lower += i
+    elif i.isupper():
+        upper += i
+    elif int(i) % 2 != 0:
+        odd += i
+    elif int(i) % 2 == 0:
+        even += i
+print(lower + upper + odd + even)
+
+###### ATHLETE SHOT
+from operator import itemgetter
+nm = list(map(int, input().split()))
+n, m = nm[0], nm[1]
+rows = []
+for i in range(n):
+    rows += [list(map(int, input().split()))]
+
+k = int(input())
+arr = sorted(rows, key=itemgetter(k))
+for i in arr:
+    print(*i)    
+ 
+#######PYTHON EVALUATION
+x = input()
+eval(x)
+ 
+#####Eye and Identity
+
+import numpy as np
+
+n,m=map(int,input().split())
+np.set_printoptions(sign=" ")
+print(np.eye(n,m))
+
+
+####Zeros and Ones
+
+import numpy as np
+
+nums=tuple(map(int,input().split()))
+print(np.zeros(nums,dtype=np.int))
+print(np.ones(nums,dtype=np.int))
+
+
+#######Zipped
+
+nx = list(map(int, input().split()))
+n, x = nx[0], nx[1]
+z = []
+for i in range (x):
+     z.append(list(map(float, input().split())))
+zipVar = zip(*z)
+for i in zipVar:
+    print(sum(i)/x)
+
+
+#######Concatenate
+
+import numpy as np
+list1=[]
+list2=[]
+n,m,p=map(int,input().split())
+for i in range(n):
+    a=list(map(int,input().split()))
+    list1.append(a)
+for i in range(m):
+    b=list(map(int,input().split()))
+    list2.append(b)
+arr1=np.array(list1)
+arr2=np.array(list2)
+print(np.concatenate((arr1,arr2),axis=0))
+
+
+
+#######Transpose and Flatten
+
+import numpy as np
+n,m=map(int,input().split())
+list1=[]
+for i in range(n):
+    a=list(map(int,input().split()))
+    list1.append(a)
+arr=np.array(list1)
+print(np.transpose(arr))
+print(arr.flatten())
+
+
+
+#######Shape and Reshapeimport numpy as np
+print(np.array(input().split(), dtype=int).reshape(3, 3))
+
+######Calendar Module
+
+import calendar
+mdy = input()
+mdy = mdy.split()
+mm = int(mdy[0])
+dd = int(mdy[1])
+yyyy = int(mdy[2])
+c = calendar.weekday(yyyy, mm, dd)
+if c == 0:
+      print("MONDAY")
+elif c == 1:
+      print("TUESDAY")
+elif c == 2:
+      print("WEDNESDAY")
+elif c == 3:
+      print("THURSDAY")
+      
+elif c == 4:
+      print("FRIDAY")
+elif c == 5:
+      print("SATURDAY")
+elif c == 6:
+      print("SUNDAY")
+          
+
+##########Arrays
+
+def arrays(arr):
+    # complete this function
+    # use numpy.array
+    ar1 = arr[::-1]
+    numpy_array = numpy.array(ar1, float)
+    return numpy_array
+
+#######Collections.deque()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import deque 
+d = deque()
+n = int(input())
+for i in range(n):
+    l = input().split()
+    command = l[0]
+    if len(l) > 1:
+        e = l[1]
+    if command == "append":
+        d.append(e)
+    elif command == "pop":
+        d.pop()
+    elif command == "appendleft":
+        d.appendleft(e)
+    elif command == "popleft":
+        d.popleft()
+print(*d)
+
+########Word Order
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import Counter
+n = int(input())
+l = []
+for i in range(n):
+    l.append(input())
+c = Counter(l)
+print(len(c))
+for i in c.values():
+    print(i, end=" ")
+
+########Collections.OrderedDict()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+from collections import OrderedDict
+d=OrderedDict()
+for _ in range(int(input())):
+    items=input().split(' ')
+    item=' '.join(items[:-1])
+    d[item]=d.get(item, 0)+int(items[-1])
+for i in d.items():
+    print(*i) 
+
+#######Collections.namedtuple()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import  namedtuple
+(n, s_info) = (int(input()), input().split())
+info = namedtuple("info", s_info)
+l = [int(info._make(input().split()).MARKS) for _ in range(n)]
+print(sum(l)/len(l))
+
+
+#####Hex Color Code
+
+import re
+in_css = False
+
+#get the number of lines and loop throuh
+n = int(input())
+for _ in range(n):
+    #get the line and check for the color code
+    line = input()
+    if '{' in line:
+        in_css = True
+    elif '}' in line:
+        in_css = False
+    elif in_css:
+        for color in re.findall('#[0-9a-fA-F]{3,6}', line):
+            print(color)
+
+
+#########Validating and Parsing Email Addresses
+
+import re
+
+#get the number of email to vlidate
+n = int(input())
+for i in range(n):
+    #get the name and email address line
+    line = input()
+    #separate name and email
+    name,email = line.split(" ")
+    #define the pattern and validate
+    pattern = "<[a-z][a-zA-Z0-9\-\.\_]+@[a-zA-Z]+\.[a-zA-Z]{1,3}>"
+    if bool(re.match(pattern,email)):
+        print(name,email)
+
+########Validating phone numbers
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import re
+
+num_of_phones = int(input())
+
+for i in range(num_of_phones):
+    phone_no = input().strip()
+
+    if len(re.findall(r'^[7-9]\d{9}$', phone_no)) != 0:
+        print("YES")
+    else:
+        print("NO")
+
+
+#######Validating phone number
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import re
+
+num_of_phones = int(input())
+
+for i in range(num_of_phones):
+    phone_no = input().strip()
+
+    if len(re.findall(r'^[7-9]\d{9}$', phone_no)) != 0:
+        print("YES")
+    else:
+        print("NO")
+
+#######Validating Roman Numerals
+#Defining the places for Roman numeral
+thousands = 'M{0,3}' #matches anything like M,MM,etc
+hundreds = '(CM|CD|D?C{0,3})' #matches anything like C,CC,CCC,CD,D,DC, etc and CM(900)
+tens = '(XC|XL|L?X{0,3})' #matches anything like X,XX,XXX,XL,.... upto XC(90)
+digits = '(IX|IV|V?I{0,3})' #the individual roman numeral digit
+
+regex_pattern = r"%s%s%s%s$" % (thousands, hundreds, tens, digits)	
+
+
+#######Regex Substitution
+
+import re
+
+for i in range(int(input())):
+    print(re.sub(r'(?<= )\|\|(?= )', "or", re.sub(r'(?<= )&&(?= )', "and", input())))
+
+#######Detect Floating Point Number
+
+# +223.565
+import re
+n = int(input())
+pattern = r'^[+-]?[0-9]*\.[0-9]+$'
+for i in range(n):
+    s = input()
+    print(bool(re.match(pattern, s)))
+
+
+#######Re.findall() & Re.finditer()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import re
+
+def find_substrings(input_string):
+    vowel = '[aeiou]'
+    consonant = '[qwrtypsdfghjklzxcvbnm]'
+    return re.findall(r'{consonant}({vowel}{{2,}})(?={consonant})'.format(vowel=vowel,consonant=consonant),input_string,re.IGNORECASE)
+
+def main():
+    input_string = input()
+    substrings = find_substrings(input_string)
+    if substrings:
+       print(*substrings, sep='\n')
+    else:
+        print(-1)
+
+if __name__=='__main__':
+    main()
+
+######Group(), Groups() & Groupdict()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import re
+s = input()
+pattern = r'([a-z A-Z 0-9])\1'
+m = re.search(pattern, s)
+if m:
+    print(m.groups()[0])
+else:
+    print(-1)
+
+#######Re.split()
+
+regex_pattern = r"[,.]+"	# Do not delete 'r'.
+
+
+#######Check Strict Superset
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def checker():
+    sub = set(map(int, input().split()))
+    if sub.issubset(a):
+        if len(a) == len(sub):
+            l.append(0)
+        else:
+            l.append(1)
+    else:
+        l.append(0)
+
+
+a = set(map(int, input().split()))
+n = int(input())
+l = []
+for i in range(n):
+    checker()
+if all(l) == 1:
+    print(True)
+else:
+     print(False)
+
+#######Check Subset
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def checker():
+    x = int(input())
+    s1 = set(map(int,input().split()))
+    y = int(input())
+    s2 = set(map(int, input().split()))
+    l = []
+    for i in s1:
+        if i in s2:
+            l.append(i)
+    l = set(l)
+    if l == s1:
+        print(True)
+    else:
+        print(False)
+
+
+t = int(input())
+for i in range(t):
+    checker()
+
+#########Check Subset
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def checker():
+    x = int(input())
+    s1 = set(map(int,input().split()))
+    y = int(input())
+    s2 = set(map(int, input().split()))
+    l = []
+    for i in s1:
+        if i in s2:
+            l.append(i)
+    l = set(l)
+    if l == s1:
+        print(True)
+    else:
+        print(False)
+
+#######The Captain's Room
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+k = int(input())
+rooms = list(map(int, input().split()))
+a = set()
+b = set()
+for room in rooms:
+    if room not in a:
+        a.add(room)
+        b.add(room)
+    else:
+        b.discard(room)
+b =list(b)
+print(b[0])
+
+#######Set Mutations
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+if __name__ =='__main__':
+    (_, A) = (int(input()),set(map(int, input().split())))
+    B = int(input())
+    for _ in range(B):
+        (command, newset) = (input().split()[0],set(map(int, input().split())))
+        getattr(A, command)(newset)
+
+    print(sum(A))
+
+#####Set .symmetric_difference() Operation
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n1 = int(input())
+e = set(input().split())
+
+n2 = int(input())
+f = set(input().split())
+
+result = e.union(f) - e.intersection(f)
+print(len(result))
+
+
+######Set .difference() Operation
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+c = 0
+e = int(input())
+eng = set(map(int, input().split()))
+f = int(input())
+french = set(map(int, input().split()))
+l = eng.difference(french)
+print(len(l))
+
+
+######Set .intersection() Operation
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+l = []
+e = int(input())
+eng = set(map(int, input().split()))
+
+f = int(input())
+french = set(map(int, input().split()))
+
+inter = eng.intersection(french)
+print(len(inter))
+
+######Set .union() Operation
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+l = []
+e = int(input())
+eng = list(map(int, input().rstrip().split()))
+f = int(input())
+french = list(map(int, input().rstrip().split()))
+for i in eng:
+    l.append(i)
+for i in french:
+    l.append(i)
+s = set(l)
+print(len(s))
+
+######Set .discard(), .remove() & .pop()
+
+(input())
+s = set(map(int, input().split()))
+n = int(input())
+for i in range(n):
+    commands = input().split()
+    if len(commands) > 1:
+        e = int(commands[1])
+    if commands[0] =="pop":
+        s.pop()
+    if commands[0] == "remove":
+        s.remove(e)
+    if commands[0] == "discard":
+        s.discard(e)
+print(sum(s))
+
+
+##########Set .add()
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n=int(input())
+x=[input()for i in range(n)]
+t=set(x)
+print(len(t))
+
+
+######No Idea
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+input()
+happiness = 0
+arr = list(map(int, input().split()))
+A = set(map(int, input().split()))
+B = set(map(int, input().split()))
+for i in arr:
+    if i in A:
+        happiness += 1
+    elif i in B:
+        happiness -= 1
+print(happiness)
+
+
+######Symmetric Difference
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+M = int(input())
+M = set(map(int,input().split()))
+
+N = int(input())
+N = set(map(int,input().split()))
+
+a = M.difference(N)
+b = N.difference(M)
+
+for i in b:
+    a.add(i)
+
+for i in sorted(a):
+    print(i)
+
+
+#######Introduction to Sets
+
+def average(array):
+    # your code goes here
+    array=set(array)
+
+    return sum(array)/len(array)
+
+#####The Minion Game
+
+def minion_game(string):
+    # your code goes here
+    s=len(string)
+    con,vow=0,0
+
+    for i in range(s):
+        if string[i] in 'AIEOU':
+            vow=vow+(s-i)
+        else:
+            con=con+(s-i)
+
+    if con>vow:
+        print('Stuart {}'.format(con))
+    else:
+        print('Kevin {}'.format(vow))
+
+
+#######Capitalize!
+
+import string
+# Complete the solve function below.
+def solve(s):
+    l=s.split(" ")
+    s=''
+    for i in l:
+        s=s+i.capitalize()+' '
+
+    return s
+#######Alphabet Rangoli
+
+import string
+def print_rangoli(size):
+    # your code goes here
+    characters = string.ascii_lowercase
+    lst = []
+    width = 4 * size -3
+    for i in range(size):
+        s = '-'.join(characters[i:size])
+        lst.append((s[::-1] + s[1:]).center(width,'-'))
+    print('\n'.join(lst[:0:-1] + lst))
+
+########String Formatting
+
+def print_formatted(number):
+    # your code goes here
+    l=len("{0:b}".format(number))
+
+    for i in range(1,number+1):
+        print("{0:{w}d} {0:{w}o} {0:{w}x} {0:{w}b}".format(i,w=l))
+
+#######Designer Door Mat
+
+# Enter your code here. Read input from STDIN. Print output to STDOU
+
+R,C = map(int,input().split(' '))
+
+
+for i in range(1,R,2):
+    print((".|."*i).center(C,'-'))
+
+print("WELCOME".center(C,'-'))
+
+for i in range(R-2,-1,-2):
+    print((".|."*i).center(C,'-'))
+
+#######Text Wrap
+
+
+def wrap(string, max_width):
+    return textwrap.fill(string,max_width)
+
+#####Text Alignment
+
+#Replace all ______ with rjust, ljust or center. 
+
+thickness = int(input()) #This must be an odd number
+c = 'H'
+
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+
+#######String Validator
+
+if __name__ == '__main__':
+    s = input()
+    print(any([i.isalnum() for i in s]))
+    print(any([i.isalpha() for i in s]))
+    print(any([i.isdigit() for i in s]))
+    print(any([i.islower() for i in s]))
+    print(any([i.isupper() for i in s]))
+
+#########Find a string
+
+def count_substring(string, sub_string):
+
+    ml=len(string)
+    sl=len(sub_string)
+    c=0
+
+    for i in range(ml-sl+1):
+        if(string[i:(i+sl)]==sub_string):
+            c=c+1
+    return c
+
+######Mutations
+
+def mutate_string(string, position, character):
+    return string[:position]+character+string[position+1:]
+
+
+#####What's Your Name?
+
+def print_full_name(a, b):
+    print("Hello %s %s! You just delved into python."% (a,b))
+
+    
+###String Split and Join
+
+def split_and_join(line):
+    # write your code here
+    return'-'.join(line.split(" "))
+
+######sWAP cASE
+def change(c):
+    if str.islower(c):
+       return str.upper(c)
+    else:
+        return str.lower(c)
+
+def swap_case(s):
+    return ''.join(map(change,s))
+########Tuples
+
+if __name__ == '__main__':
+    n = int(input())
+    integer_list = tuple(map(int, input().split()))
+    print(hash(integer_list))
+
+
+#######Lists
+
+if __name__ == '__main__':
+    n =int(input())
+    l=[]
+    for i in range(n):
+            x=input().split(" ")
+            opr=x[0]
+            if opr=="insert":
+                l.insert(int(x[1]),int(x[2]))
+            if opr=="print":
+                print(l)
+            if opr=="remove":
+                l.remove(int(x[1]))
+            if opr=="append":
+                l.append(int(x[1]))
+            if opr=="sort":
+                l.sort()
+            if opr=="pop":
+                if len(l)!=0:
+                    l.pop()
+            if opr=="reverse":
+                l.reverse()
+
+        
+###########Print Function
+
+if __name__ == '__main__':
+    n = int(input())
+    for i in range(1,n+1):
+        print(i,end="")
+
+
+######Nested Lists
+
+marksheet=[]
+scoresheet=[]
+if __name__=='__main__':
+        for _ in range(int(input())):
+                 name = input()
+                 score = float(input())
+                 marksheet+=[[name,score]]
+                 scoresheet+=[score]
+        x=sorted(set(scoresheet))[1]
+
+        for n, s in sorted(marksheet):
+            if s==x:
+                print(n)
+
+
+
+
+
+                 
+######Find the Runner-Up Score
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+
+    listnew=[]
+
+    for i in arr:
+
+        if i not in listnew:
+
+
+            listnew.append(i)
+
+    listnew.sort(reverse=True)
+
+    print(listnew[1])
+
+#######List Comprehensions
+
+
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+    l=[[i,j,k] for i in range(x+1) for j in range(y+1) for k in range(z+1) if i+j+k!=n ]
+    print(l)
+
+
+######Birthday Cake Candles
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'birthdayCakeCandles' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER_ARRAY candles as parameter.
+#
+
+def birthdayCakeCandles(ar):
+    biggest = max(ar)
+    return ar.count(biggest)
+
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    candles_count = int(input().strip())
+
+    candles = list(map(int, input().rstrip().split()))
+
+    result = birthdayCakeCandles(candles)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+Mini-Max Sum
+#######
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the miniMaxSum function below.
+def miniMaxSum(arr):
+    all_res = []
+    for i in range(len(arr)):
+        res = sum(arr) - arr[i]
+        all_res.append(res)
+    print(min(all_res),max(all_res))
+
+if __name__ == '__main__':
+    arr = list(map(int, input().rstrip().split()))
+
+    miniMaxSum(arr)
+
+@######e####Staircase
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the staircase function below.
+def staircase(n):
+    for i in range(1, n + 1):
+        txt = "#" * i
+        print(txt.rjust(n))
+if __name__== '__main__':
+    n = int(input())       
+
+    staircase(n)
+
+
+
+    
+#######Plus Minus
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the plusMinus function below.
+def plusMinus(arr):
+    pos_ls = []
+    neg_ls = []
+    zeros = []
+
+    for i in arr:
+        if i > 0:
+           pos_ls.append(i)  
+        elif i < 0: 
+           neg_ls.append(i)
+        else:
+            zeros.append(i)
+
+    print(len(pos_ls) /len(arr))       
+    print(len(neg_ls) /len(arr))
+    print(len(zeros) /len(arr))
+
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    plusMinus(arr)
+
+########A Very Big Sum
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the aVeryBigSum function below.
+def aVeryBigSum(ar):
+    res = 0
+    for i in ar:
+        res =res + i
+    return res    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ar_count = int(input())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = aVeryBigSum(ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+#######Simple Array Sum#!/bin/python3
+
+import os
+import sys
+
+#
+# Complete the simpleArraySum function below.
+
+def simpleArraySum(ar):
+    #
+    # Write your code here.
+    #
+    sum = 0
+    for element in ar:
+        sum += element
+    return sum   
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ar_count = int(input())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = simpleArraySum(ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+########Solve Me First
+
+
+def solveMeFirst(a,b):
+
+	# Hint: Type return a+b below
+    result = a + b 
+    return result
+
+
+num1 = int(input())
+num2 = int(input())
+res = solveMeFirst(num1,num2)
+print(res)
+
+
+
+
+
